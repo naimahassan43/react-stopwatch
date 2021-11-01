@@ -10,14 +10,41 @@ class Title extends Component {
     };
   }
 
+  editHandler() {
+    this.setState({
+      ...this.state,
+      isInput: true,
+    });
+  }
+
+  inputChange(event) {
+    this.setState({
+      ...this.state,
+      title: event.target.value,
+    });
+  }
+
   render() {
     let output = null;
     if (this.state.isInput) {
+      output = (
+        <div className="title">
+          <input
+            className="form-control"
+            onChange={(event) => this.inputChange(event)}
+            type="text"
+            value={this.state.title}
+          />
+        </div>
+      );
     } else {
       output = (
         <div className="d-flex title">
           <h1 className="display-4">{this.state.title}</h1>
-          <span className="ms-auto edit-icon">
+          <span
+            onClick={() => this.editHandler()}
+            className="ms-auto edit-icon"
+          >
             <i className="fas fa-pencil-alt"></i>
           </span>
         </div>
