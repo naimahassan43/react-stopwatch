@@ -2,17 +2,20 @@ import React from "react";
 import Title from "./Components/Title/Title.js";
 import CountDown from "./Components/CountDown/CountDown.js";
 import Controller from "./Components/Controller/Controller.js";
+import Laps from "./Components/Laps/Laps.js";
 
 class App extends React.Component {
   //constructor
   constructor(props) {
     super(props);
+
     this.state = {
       time: {
         minutes: 0,
         seconds: 0,
         mili: 0,
       },
+      laps: [],
     };
   }
 
@@ -47,7 +50,16 @@ class App extends React.Component {
     clearInterval(this.intervalID);
   }
   //get lap
-  getLap() {}
+  getLap() {
+    let time = {
+      ...this.state.time,
+    };
+    this.setState({
+      ...this.state,
+      laps: [time, ...this.state.laps],
+    });
+    console.log(this.state.laps);
+  }
   //get reset
   getReset() {
     this.setState({
@@ -56,6 +68,7 @@ class App extends React.Component {
         seconds: 0,
         mili: 0,
       },
+      laps: [],
     });
   }
   //rendering
@@ -71,7 +84,9 @@ class App extends React.Component {
                 start={this.getStart.bind(this)}
                 pause={this.getPause.bind(this)}
                 reset={this.getReset.bind(this)}
+                lap={this.getLap.bind(this)}
               />
+              <Laps className="my-5" laps={this.state.laps} />
             </div>
           </div>
         </div>

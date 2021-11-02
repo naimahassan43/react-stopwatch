@@ -4,10 +4,10 @@ import "./Digit.css";
 const Digit = (props) => {
   return (
     <div
-      className="digit mx-3 text-center"
+      className="digit mx-2 text-center"
       style={{ borderColor: props.color }}
     >
-      <h1 className="display-2 py-3" style={{ color: props.color }}>
+      <h1 className="display-2 py-md-3 py-2" style={{ color: props.color }}>
         {props.value < 10 ? `0${props.value}` : props.value}
       </h1>
     </div>
