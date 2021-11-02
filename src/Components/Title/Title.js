@@ -5,7 +5,7 @@ class Title extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "This is a dummy title",
+      title: "title",
       isInput: false,
     };
   }
@@ -56,7 +56,7 @@ class Title extends Component {
     } else {
       output = (
         <div className="d-flex title">
-          <h1 className="display-6 text-uppercase">{this.state.title}</h1>
+          <h1 className="text-uppercase">{this.state.title}</h1>
           <span
             onClick={() => this.editHandler()}
             className="ms-auto edit-icon"
