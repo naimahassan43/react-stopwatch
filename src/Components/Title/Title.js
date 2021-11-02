@@ -23,7 +23,21 @@ class Title extends Component {
       title: event.target.value,
     });
   }
+  keyPressHandler(event) {
+    if (event.key === "Enter") {
+      this.setState({
+        ...this.state,
+        isInput: false,
+      });
+    }
+  }
 
+  blurHandler(event) {
+    this.setState({
+      ...this.state,
+      isInput: false,
+    });
+  }
   render() {
     let output = null;
     if (this.state.isInput) {
@@ -32,6 +46,8 @@ class Title extends Component {
           <input
             className="form-control"
             onChange={(event) => this.inputChange(event)}
+            onKeyPress={(event) => this.keyPressHandler(event)}
+            onBlur={(event) => this.blurHandler(event)}
             type="text"
             value={this.state.title}
           />
@@ -40,7 +56,7 @@ class Title extends Component {
     } else {
       output = (
         <div className="d-flex title">
-          <h1 className="display-4">{this.state.title}</h1>
+          <h1 className="display-6 text-uppercase">{this.state.title}</h1>
           <span
             onClick={() => this.editHandler()}
             className="ms-auto edit-icon"
