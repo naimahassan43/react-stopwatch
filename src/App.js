@@ -18,7 +18,7 @@ class App extends React.Component {
 
   // get start
   getStart() {
-    setInterval(() => {
+    this.intervalID = setInterval(() => {
       let minutes = this.state.time.minutes;
       let seconds = this.state.time.seconds;
       let mili = this.state.time.mili;
@@ -42,7 +42,22 @@ class App extends React.Component {
       });
     }, 100);
   }
-
+  //get pause
+  getPause() {
+    clearInterval(this.intervalID);
+  }
+  //get lap
+  getLap() {}
+  //get reset
+  getReset() {
+    this.setState({
+      time: {
+        minutes: 0,
+        seconds: 0,
+        mili: 0,
+      },
+    });
+  }
   //rendering
   render() {
     return (
@@ -52,7 +67,11 @@ class App extends React.Component {
             <div className="col-8 offset-2">
               <Title />
               <CountDown time={this.state.time} />
-              <Controller start={this.getStart.bind(this)} />
+              <Controller
+                start={this.getStart.bind(this)}
+                pause={this.getPause.bind(this)}
+                reset={this.getReset.bind(this)}
+              />
             </div>
           </div>
         </div>

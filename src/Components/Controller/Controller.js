@@ -28,6 +28,7 @@ export class Controller extends Component {
       lap: false,
       reset: true,
     });
+    this.props.pause();
   }
 
   lapHandler() {}
@@ -38,6 +39,7 @@ export class Controller extends Component {
       lap: false,
       reset: false,
     });
+    this.props.reset();
   }
   getController() {
     let output = null;
