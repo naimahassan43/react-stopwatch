@@ -1,6 +1,7 @@
 import React from "react";
 import Title from "./Components/Title/Title.js";
 import CountDown from "./Components/CountDown/CountDown.js";
+import Controller from "./Components/Controller/Controller.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class App extends React.Component {
             <div className="col-8 offset-2">
               <Title />
               <CountDown time={this.state.time} />
+              <Controller />
             </div>
           </div>
         </div>
